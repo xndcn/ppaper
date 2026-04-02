@@ -250,12 +250,12 @@ export default {
 | GitHub Pages | 免费 | ~100GB/月 | 100MB | 最简单，适合早期 |
 | itch.io | 免费 | — | — | 游戏专属平台，自带受众 |
 
-### ✅ 决策：Cloudflare Pages（主部署） + itch.io（游戏发现）
+### ✅ 决策：GitHub Pages（主部署） + itch.io（游戏发现）
 
 **部署流程：**
 ```bash
 npm run build          # 生成 dist/ 目录
-# 推送到 GitHub → Cloudflare Pages 自动构建部署
+# 推送到 GitHub main 分支 → GitHub Actions 自动构建部署到 gh-pages 分支
 ```
 
 ---
@@ -272,5 +272,5 @@ npm run build          # 生成 dist/ 目录
 | LLM（客户端） | **WebLLM** | 零服务器成本，离线可用 |
 | 构建工具 | **Vite 6** | 最快 HMR，TypeScript 原生 |
 | 测试框架 | **Vitest + Playwright** | 与 Vite 生态无缝集成 |
-| 部署平台 | **Cloudflare Pages** | 无限带宽，全球 CDN |
+| 部署平台 | **GitHub Pages** | 免费，与 GitHub Actions CI/CD 原生集成 |
 | 许可证 | **MIT** | 最宽松，允许社区贡献 |

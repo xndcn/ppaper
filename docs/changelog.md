@@ -11,6 +11,15 @@
 
 ### 变更（Changed）
 
+- 将 `docs/roadmap.md` 从粗粒度任务列表细化为 69 个 Agent 可执行子任务（X.Y 编号）
+  - 每个子任务明确：创建/修改文件、使用 Agent、验证命令、依赖关系、工作量
+  - 新增并行任务说明和关键路径分析
+  - 新增阶段概览汇总表（含子任务数和预估工作量）
+- 部署平台从 Cloudflare Pages 改为 GitHub Pages
+  - `docs/roadmap.md`：子任务 0.7 / 10.2 更新为 GitHub Pages 配置（`vite base`、`deploy.yml`、`404.html`）
+  - `docs/tech-selection.md`：第八章决策及第九章总结表更新
+  - `docs/system-architecture.md`：7.3 节替换为 GitHub Actions workflow 配置
+
 ### 修复（Fixed）
 
 ### 移除（Removed）

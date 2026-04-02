@@ -534,19 +534,50 @@ export default defineConfig({
 }
 ```
 
-### 7.3 Cloudflare Pages 部署
+### 7.3 GitHub Pages 部署
+
+```typescript
+// vite.config.ts — 设置仓库子路径（替换为实际仓库名）
+export default defineConfig({
+  base: '/ppaper/',   // GitHub Pages 部署到 username.github.io/ppaper/
+  // ...其他配置
+});
+```
 
 ```yaml
-# _redirects（放在 public/ 目录）
-/*  /index.html  200
+# .github/workflows/deploy.yml
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm ci
+      - run: npm run build
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+```
+
+```html
+<!-- public/404.html — SPA 路由 fallback（GitHub Pages 无法配置服务端重定向） -->
+<script>
+  sessionStorage.redirect = location.href;
+</script>
+<meta http-equiv="refresh" content="0;URL='/'">
 ```
 
 ```
-构建设置：
-  框架预设：None（自定义）
-  构建命令：npm run build
-  输出目录：dist
-  环境变量：VITE_LLM_API_KEY=（可选）
+环境变量（仓库 Settings > Secrets）：
+  VITE_LLM_API_KEY=（可选，LLM API 密钥）
 ```
 
 ---
