@@ -35,7 +35,7 @@
 - **Agent：** —
 - **验证：** `npm install` ✓，`npx tsc --noEmit` ✓，`npx vite build` ✓
 - **依赖：** 无
-- **状态：** [ ]
+- **状态：** [x]
 
 #### 0.2 配置 Vitest + Playwright 测试框架
 
@@ -43,7 +43,7 @@
 - **Agent：** tdd-guide
 - **验证：** `npm test` ✓，`npm run test:coverage` 生成报告
 - **依赖：** 0.1
-- **状态：** [ ]
+- **状态：** [x]
 
 #### 0.3 配置 ESLint + Prettier
 
@@ -51,7 +51,7 @@
 - **Agent：** —
 - **验证：** `npm run lint` ✓，`npm run format` ✓
 - **依赖：** 0.1
-- **状态：** [ ]
+- **状态：** [x]
 
 #### 0.4 创建 main.ts + BootScene + logger
 
@@ -59,7 +59,7 @@
 - **Agent：** tdd-guide（为 logger 写测试）
 - **验证：** `npm run dev` 浏览器显示 "PPaper"，`npm run typecheck` ✓，`npm run lint` ✓
 - **依赖：** 0.1, 0.3
-- **状态：** [ ]
+- **状态：** [x]
 
 #### 0.5 创建类型定义骨架文件
 
@@ -67,7 +67,7 @@
 - **Agent：** —
 - **验证：** `npm run typecheck` ✓
 - **依赖：** 0.1
-- **状态：** [ ]
+- **状态：** [x]
 
 #### 0.6 配置 GitHub Actions CI
 
@@ -75,7 +75,7 @@
 - **Agent：** —
 - **验证：** 推送分支创建 PR，CI 通过
 - **依赖：** 0.2, 0.3, 0.4
-- **状态：** [ ]
+- **状态：** [x]
 
 #### 0.7 GitHub Pages 首次部署
 
@@ -83,7 +83,7 @@
 - **Agent：** —
 - **验证：** `npm run build` ✓，推送后 GitHub Pages URL 显示 "PPaper"
 - **依赖：** 0.4
-- **状态：** [ ]
+- **状态：** [x]
 
 #### 0.8 实现 math 工具函数 + 文档更新
 
@@ -91,7 +91,7 @@
 - **Agent：** tdd-guide
 - **验证：** `npm test` ✓，math 覆盖率 80%+
 - **依赖：** 0.5
-- **状态：** [ ]
+- **状态：** [x]
 
 > **可并行：** 0.2 与 0.3 可并行；0.5 可与 0.2/0.3 并行
 

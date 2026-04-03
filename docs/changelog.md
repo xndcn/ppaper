@@ -9,6 +9,17 @@
 
 ### 新增（Added）
 
+- Phase 0 — 项目初始化
+  - Vite 6 + TypeScript 5.x + Phaser 3 项目骨架
+  - Vitest + Playwright 测试框架配置（覆盖率阈值 80%）
+  - ESLint 9 + Prettier 代码质量工具（no-explicit-any: error，no-console: error）
+  - 基础场景 (BootScene) 显示白色 "PPaper" 标题
+  - TypeScript 类型定义骨架（physics, airplane, game, skill, events）
+  - GitHub Actions CI/CD 工作流（PR 检查 + GitHub Pages 部署）
+  - math 工具函数（向量加减缩放归一化、lerp 钳制插值、角度转换），测试 100% 覆盖
+  - logger 工具（生产环境静默，开发环境输出）
+  - 游戏配置（480x854 竖屏，Matter.js 碰撞引擎，pixelArt 模式）
+
 ### 变更（Changed）
 
 - 将 `docs/roadmap.md` 从粗粒度任务列表细化为 69 个 Agent 可执行子任务（X.Y 编号）
