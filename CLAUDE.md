@@ -53,6 +53,7 @@
    → npm run lint             # 无 ESLint 错误
    → npm run typecheck        # 无 TypeScript 错误
    → npm run test:coverage    # 本模块覆盖率 ≥ 80%
+   → Playwright MCP 验证      # 使用 Playwright MCP 工具在浏览器中交互验证关键流程，截图保存到 tests/e2e/artifacts/
 
 6. 代码审查
    → 使用 code-reviewer Agent 进行审查
@@ -221,6 +222,23 @@ E2E 测试（tests/e2e/）
   → 存档 → 刷新 → 读档验证
 ```
 
+### Playwright MCP 验证（CRITICAL）
+
+项目已配置 Playwright MCP 服务器（`.mcp.json`），**每次功能变更或 bug 修复后，必须使用 Playwright MCP 工具进行交互式浏览器验证**。
+
+**工作流程：**
+1. 启动开发服务器（`npm run dev`）
+2. 使用 `browser_navigate` 打开 `http://localhost:5173`
+3. 使用 `browser_snapshot` 获取页面可访问性快照
+4. 使用 `browser_click`、`browser_type` 等工具模拟用户操作
+5. 每步操作后使用 `browser_take_screenshot` 截图，保存到 `tests/e2e/artifacts/`
+6. 确认相关 UI 状态符合预期
+
+**强制要求：**
+- 使用 MCP 工具（`browser_*`）而非仅依赖命令行测试
+- 新增功能必须有对应的手动 MCP 交互验证
+- 截图文件命名：`{功能描述}_{时间戳}.png`
+
 ### 运行命令
 
 ```bash
@@ -371,13 +389,14 @@ npm run typecheck        # TypeScript 类型检查（不输出文件）
 
 ### 何时必须调用 Agent
 
-| 场景 | 调用 Agent |
-|------|-----------|
-| 完成代码编写/修改后 | `code-reviewer` |
-| 开始新功能实现前 | `everything-claude-code:planner` |
-| 测试失败时 | `everything-claude-code:tdd-guide` |
-| 构建失败时 | `everything-claude-code:build-error-resolver` |
-| 存在潜在安全问题时 | `everything-claude-code:security-reviewer` |
+| 场景 | 调用方式 |
+|------|----------|
+| 完成代码编写/修改后 | `code-reviewer` Agent |
+| 开始新功能实现前 | `everything-claude-code:planner` Agent |
+| 测试失败时 | `everything-claude-code:tdd-guide` Agent |
+| 构建失败时 | `everything-claude-code:build-error-resolver` Agent |
+| 存在潜在安全问题时 | `everything-claude-code:security-reviewer` Agent |
+| 功能变更/bug 修复后 | Playwright MCP 工具（`browser_*`），交互验证 + 截图 |
 
 ### 并行调用（提高效率）
 
